@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { clientId, getCustomer } from "../GraphQL/queries";
 
-export const App = () => {
+export const PersonalInfoPage = () => {
   useEffect(() => {
     getCustomer({ id: clientId });
   });

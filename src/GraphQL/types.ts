@@ -5,22 +5,22 @@ export type Currency = string;
 
 // ---------- Enums ----------
 export enum CalendarState {
-  Open = 'Open',
-  Paid = 'Paid',
-  Canceled = 'Canceled',
-  Storno = 'Storno',
-  Test = 'Test',
+  Open = "Open",
+  Paid = "Paid",
+  Canceled = "Canceled",
+  Storno = "Storno",
+  Test = "Test",
 }
 
 export enum EventType {
-  Individual = 'Individual',
-  Group = 'Group',
-  Unavailability = 'Unavailability',
+  Individual = "Individual",
+  Group = "Group",
+  Unavailability = "Unavailability",
 }
 
 export enum OrderByArg {
-  ASC = 'ASC',
-  DESC = 'DESC',
+  ASC = "ASC",
+  DESC = "DESC",
 }
 
 // ---------- Types ----------
@@ -308,6 +308,7 @@ export interface GetCustomerQuery {
 export interface ListCalendarsQueryVariables {
   where?: CalendarWhereInput | null;
   orderBy?: CalendarOrderByInput | null;
+  take?: number | null;
 }
 
 export interface ListCalendarsQuery {

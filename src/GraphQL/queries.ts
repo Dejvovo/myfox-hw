@@ -39,7 +39,52 @@ export const getCustomer = async (
   return data?.getCustomer ?? undefined;
 };
 
-export const getCalendars = async (
+export const getReservationsPart = async (
+  variables?: ListCalendarsQueryVariables
+): Promise<Calendar[] | undefined> => {
+  const query = gql`
+    query ListCalendars(
+      $where: CalendarWhereInput
+      $orderBy: CalendarOrderByInput
+      $take: Int
+    ) {
+      listCalendars(where: $where, orderBy: $orderBy, take: $take) {
+        from
+        to
+        shop {
+          name
+
+          address {
+            city
+            street
+          }
+          phone
+        }
+        carts {
+          name
+          price
+          item {
+            duration
+            picture {
+              secret
+            }
+          }
+        }
+        subject {
+          microsite {
+            logo {
+              secret
+            }
+          }
+        }
+      }
+    }
+  `;
+  const data = await fetchGql<ListCalendarsQuery>(query, variables);
+  return data?.listCalendars;
+};
+
+export const getReservationsFull = async (
   variables?: ListCalendarsQueryVariables
 ): Promise<Calendar[] | undefined> => {
   const query = gql`
